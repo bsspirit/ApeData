@@ -1,6 +1,15 @@
+.classpath
+.project
+.classpath
+.settings
+target
+*.log
+metadata/gen
 *.class
-
-# Package Files #
 *.jar
 *.war
 *.ear
+
+
+
+
