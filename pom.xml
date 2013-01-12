@@ -2,25 +2,48 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.conan</groupId>
-  <artifactId>Demo</artifactId>
+  <groupId>org.ape.data</groupId>
+  <artifactId>Core</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Demo</name>
+  <name>ApeData</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.1.1.RELEASE</spring.version>
-    <mybatis.version>3.1.1</mybatis.version>
 	<slf4j.version>1.5.8</slf4j.version>
 	<log4j.version>1.2.15</log4j.version>
-	<mybatis.ehcache.version>1.0.0</mybatis.ehcache.version>
   </properties>
+  
+  <repositories>
+    <repository>
+      <id>spring-maven-release</id>
+      <name>Spring Maven Release Repository</name>
+      <url>http://maven.springframework.org/release</url>
+    </repository>
+    <repository>
+      <id>spring-maven-milestone</id>
+      <name>Spring Maven Milestone Repository</name>
+      <url>http://maven.springframework.org/milestone</url>
+    </repository>
+    <repository>
+      <id>JBoss Repo</id>
+      <name>JBoss Repo</name>
+      <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+    </repository>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>http://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
 
   <dependencies>
-  
   	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-core</artifactId>
@@ -29,6 +52,12 @@
 	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-context</artifactId>
+	  <version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-tx</artifactId>
 	  <version>${spring.version}</version>
 	</dependency>
 
@@ -54,21 +83,11 @@
 	 
 	<dependency>
 	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-context</artifactId>
-	  <version>${spring.version}</version>
-	</dependency>
-	 
-	<dependency>
-	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-context-support</artifactId>
 	  <version>${spring.version}</version>
 	</dependency>
 	 
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-tx</artifactId>
-	  <version>${spring.version}</version>
-	</dependency>
+	
 	 
 	<dependency>
 	  <groupId>org.springframework</groupId>
@@ -121,27 +140,6 @@
 		<version>2.4</version>
 	</dependency>
 	
-	<!-- mybatis -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>${mybatis.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>cglib</groupId>
-      <artifactId>cglib</artifactId>
-      <version>2.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-ehcache</artifactId>
-      <version>${mybatis.ehcache.version}</version>
-    </dependency>
 
 	<!-- mysql -->
 	<dependency>
