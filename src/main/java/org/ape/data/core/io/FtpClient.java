@@ -1,81 +1,107 @@
 package org.ape.data.core.io;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTPClient;
-
+/**
+ * 
+ * @title 		ftp协议的文件传输
+ * @description	
+ * @usage		
+ * @copyright	Copyright 2012  Sunshine Insurance Group . All rights reserved.
+ * @company		Sunshine Insurance Group.
+ * @author		yushuanghai
+ * @version		$Id: FtpClient.java,v 1.3 2013-1-15 上午9:56:13  $
+ * @create		2013-1-15 上午9:56:13
+ */
 public class FtpClient{ 
-    public static void main(String[] args) { 
-        testUpload(); 
-        testDownload(); 
-    } 
 
-    /** 
-     * FTP上传单个文件测试 
-     */ 
-    public static void testUpload() { 
+    /**
+     *  
+     * 文件上传
+     * @param ip 主机ip
+     * @param user 用户名
+     * @param password 密码
+     * @param srcFile 源文件
+     * @param targetDir 目标目录
+     * @param targetFile 目标文件名
+     * @param fileExt 源文件扩展名
+     * @throws Exception
+     */
+    public static void upload(String ip,String user,String password,String srcFile,String targetDir,
+    		String targetFile,String fileExt) throws Exception { 
         FTPClient ftpClient = new FTPClient(); 
         FileInputStream fis = null; 
-
         try { 
-            ftpClient.connect("192.168.14.117"); 
-            ftpClient.login("admin", "123"); 
-
-            File srcFile = new File("C:\\new.gif"); 
-            fis = new FileInputStream(srcFile); 
-            //设置上传目录 
-            ftpClient.changeWorkingDirectory("/admin/pic"); 
+            ftpClient.connect(ip); 
+            ftpClient.login(user,password); 
+            File src = new File(srcFile); 
+            fis = new FileInputStream(src); 
+            ftpClient.changeWorkingDirectory(targetDir); 
             ftpClient.setBufferSize(1024); 
             ftpClient.setControlEncoding("GBK"); 
-            //设置文件类型（二进制） 
-            ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE); 
-            ftpClient.storeFile("3.gif", fis); 
+            if(fileExt.contains("txt")||fileExt.contains("csv")){
+            	ftpClient.setFileType(FTPClient.ASCII_FILE_TYPE); 
+            }else{
+            	ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE); 
+            }
+            ftpClient.storeFile(targetFile, fis); 
         } catch (IOException e) { 
             e.printStackTrace(); 
-            throw new RuntimeException("FTP客户端出错！", e); 
+            throw new Exception("FTP Client upload Error！", e); 
         } finally { 
             IOUtils.closeQuietly(fis); 
             try { 
                 ftpClient.disconnect(); 
             } catch (IOException e) { 
                 e.printStackTrace(); 
-                throw new RuntimeException("关闭FTP连接发生异常！", e); 
+                throw new Exception("FTP Client close Error！", e); 
             } 
         } 
     } 
 
-    /** 
-     * FTP下载单个文件测试 
-     */ 
-    public static void testDownload() { 
+    /**
+     * 
+     * 文件下载
+     * @param ip 主机ip
+     * @param user 用户名
+     * @param password 密码
+     * @param srcFile 源文件
+     * @param targetFile 目标文件
+     * @param fileExt 源文件扩展名
+     * @throws Exception
+     */
+    public static void download(String ip,String user,String password,String srcFile,
+    		String targetFile,String fileExt) throws Exception { 
         FTPClient ftpClient = new FTPClient(); 
         FileOutputStream fos = null; 
 
         try { 
-            ftpClient.connect("192.168.14.117"); 
-            ftpClient.login("admin", "123"); 
-
-            String remoteFileName = "/admin/pic/3.gif"; 
-            fos = new FileOutputStream("c:/down.gif"); 
-
+            ftpClient.connect(ip); 
+            ftpClient.login(user,password); 
+            fos = new FileOutputStream(targetFile); 
             ftpClient.setBufferSize(1024); 
-            //设置文件类型（二进制） 
-            ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE); 
-            ftpClient.retrieveFile(remoteFileName, fos); 
+            if(fileExt.contains("txt")||fileExt.contains("csv")){
+            	ftpClient.setFileType(FTPClient.ASCII_FILE_TYPE); 
+            }else{
+            	ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE); 
+            }
+            ftpClient.retrieveFile(srcFile, fos); 
         } catch (IOException e) { 
             e.printStackTrace(); 
-            throw new RuntimeException("FTP客户端出错！", e); 
+            throw new Exception("FTP Client download Error！", e); 
         } finally { 
             IOUtils.closeQuietly(fos); 
             try { 
                 ftpClient.disconnect(); 
             } catch (IOException e) { 
                 e.printStackTrace(); 
-                throw new RuntimeException("关闭FTP连接发生异常！", e); 
+                throw new Exception("FTP Client close Error！", e); 
             } 
         } 
     } 
