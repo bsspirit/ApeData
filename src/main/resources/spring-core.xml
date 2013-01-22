@@ -12,6 +12,7 @@ http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
 
 	<context:property-placeholder location="classpath:jdbc.properties,classpath:hadoop.properties"/>
     <context:component-scan base-package="org.ape.data.core.storage"/>
+    <context:component-scan base-package="org.ape.data.core.io"/>
   	<bean id="mysqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
     	<property name="driverClassName" value="${jdbc.driver}"></property>  
     	<property name="url" value="${jdbc.url}"></property>  

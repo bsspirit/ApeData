@@ -1,4 +1,4 @@
-package org.ape.data.core.io;
+package org.ape.data.core.util;
 
 import java.io.File;
 
@@ -21,6 +21,7 @@ import org.apache.commons.net.ftp.FTPClient;
  */
 public class FtpClient{ 
 
+	private final static int port = 20;
     /**
      *  
      * 文件上传
@@ -38,7 +39,7 @@ public class FtpClient{
         FTPClient ftpClient = new FTPClient(); 
         FileInputStream fis = null; 
         try { 
-            ftpClient.connect(ip); 
+            ftpClient.connect(ip,port); 
             ftpClient.login(user,password); 
             File src = new File(srcFile); 
             fis = new FileInputStream(src); 
@@ -82,7 +83,7 @@ public class FtpClient{
         FileOutputStream fos = null; 
 
         try { 
-            ftpClient.connect(ip); 
+            ftpClient.connect(ip,port); 
             ftpClient.login(user,password); 
             fos = new FileOutputStream(targetFile); 
             ftpClient.setBufferSize(1024); 

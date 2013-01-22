@@ -7,10 +7,14 @@ package org.ape.data.core.io;
  */
 public interface Import {
     
-    void scale();
     void split();
     void processStreaming();
     void storeMeta();
     void storeInfo();
+	void importFromRemoteByFtp(String ip, String userName, String password,
+			String src, String hdfsFile, String srcFileExt) throws Exception;
+	void importFromRemoteBySFtp(String ip, String userName, String password,
+			String srcDir, String srcFile, String hdfsFile, String srcFileExt)
+			throws Exception;
     
 }

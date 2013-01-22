@@ -7,7 +7,7 @@ package org.ape.data.core.util;
  */
 public interface Import {
     
-    void scale();
+    void importFromRemoteByFtp();
     void split();
     void processStreaming();
     void storeMeta();
