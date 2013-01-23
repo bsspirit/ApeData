@@ -20,10 +20,6 @@ import com.jcraft.jsch.SftpException;
 /**
  * 
  * @title sftp客户端
- * @description
- * @usage
- * @copyright Copyright 2012 Sunshine Insurance Group . All rights reserved.
- * @company Sunshine Insurance Group.
  * @author yushuanghai
  * @version $Id: FtpClient.java,v 1.3 2013-1-15 9:56:13 $
  * @create 2013-1-15 9:56:13
@@ -94,7 +90,7 @@ public class SFtpClient implements FileTransfer {
         try {
             sftp = connect(conf.getIp(), conf.getPort(), conf.getUsername(), conf.getPassowrd());
             String fileExt = FileUtil.getFileExt(srcFile);
-            if (!fileExt.contains("txt") && !fileExt.contains("csv")) {
+            if (!FileUtil.isASCIIFile(fileExt)) {
                 throw new IOException("SFTP Client upload  not supply file type Error!");
             }
             sftp.put(new FileInputStream(new File(srcFile)), targetFolder + FileUtil.getFileName(srcFile));
