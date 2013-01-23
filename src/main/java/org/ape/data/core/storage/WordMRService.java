@@ -7,10 +7,13 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WordMRService{
+    
+    private static final Logger log = Logger.getLogger(WordMRService.class);
 
     public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 

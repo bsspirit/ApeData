@@ -10,12 +10,9 @@ import org.springframework.test.annotation.Rollback;
 
 
 public class ImportFtpImplTest extends BaseTestCase{
-
 	
 	@Resource
 	private Import importFtpImpl;
-	
-	
 
 	@Test
 	@Rollback(value=false)

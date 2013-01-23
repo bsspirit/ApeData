@@ -1,35 +1,34 @@
 package org.ape.data.core.storage;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.fs.BlockLocation;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.log4j.Logger;
 import org.springframework.data.hadoop.fs.FileSystemFactoryBean;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class HdfsBaseDao {
 
-    private static final Log log = LogFactory.getLog(HdfsBaseDao.class);
-    @Resource
-    private     	FileSystemFactoryBean fsFactory;
+    private static final Logger log = Logger.getLogger(HdfsBaseDao.class);
     
+    @Resource
+    private FileSystemFactoryBean fsFactory;
+
     public void mkdir(String folder) throws Exception {
         Path path = new Path(folder);
         FileSystem fs = fsFactory.getObject();
         if (!fs.exists(path)) {
             fs.mkdirs(path);
-            log.info("Created: " + folder+" successed!");
-        }	
+            log.info("Created: " + folder + " successed!");
+        }
         fs.close();
     }
 
@@ -37,7 +36,7 @@ public class HdfsBaseDao {
         Path path = new Path(folder);
         FileSystem fs = fsFactory.getObject();
         fs.deleteOnExit(path);
-        log.info("Deleted: " + folder+" successed!");
+        log.info("Deleted: " + folder + " successed!");
         fs.close();
     }
 
@@ -47,7 +46,7 @@ public class HdfsBaseDao {
         FileStatus[] list = fs.listStatus(path);
         log.info("ls: " + folder);
         for (FileStatus f : list) {
-            log.info("name: "+f.getPath()+", folder: "+f.isDir()+", size: "+f.getLen());
+            log.info("name: " + f.getPath() + ", folder: " + f.isDir() + ", size: " + f.getLen());
         }
         fs.close();
     }
@@ -90,19 +89,19 @@ public class HdfsBaseDao {
     }
 
     public List<String> location(String uri) throws Exception {
-     	List<String> result = new ArrayList<String>();
-      	FileSystem fs = fsFactory.getObject();
-    	    FileStatus f = fs.getFileStatus(new Path(uri));
+        List<String> result = new ArrayList<String>();
+        FileSystem fs = fsFactory.getObject();
+        FileStatus f = fs.getFileStatus(new Path(uri));
         BlockLocation[] list = fs.getFileBlockLocations(f, 0, f.getLen());
         log.info("File Location: " + uri);
         for (BlockLocation bl : list) {
-        String[] hosts = bl.getHosts();
-        for (String host : hosts) {
-	        	if(!result.contains(host)){
-	        		result.add(host);
-		        	log.info("host:" + host);
-	        	}
-         }
+            String[] hosts = bl.getHosts();
+            for (String host : hosts) {
+                if (!result.contains(host)) {
+                    result.add(host);
+                    log.info("host:" + host);
+                }
+            }
         }
         fs.close();
         return result;

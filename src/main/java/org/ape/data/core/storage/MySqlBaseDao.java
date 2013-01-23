@@ -3,14 +3,15 @@ package org.ape.data.core.storage;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 @Repository
 public class MySqlBaseDao {	
+    
+    private static final Logger log = Logger.getLogger(MySqlBaseDao.class);
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
