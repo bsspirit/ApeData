@@ -20,14 +20,14 @@ import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
 /**
  * 
- * @title 		sftpĞ­ÒéµÄÎÄ¼ş´«Êä
+ * @title 		sftpå®¢æˆ·ç«¯
  * @description	
  * @usage		
  * @copyright	Copyright 2012  Sunshine Insurance Group . All rights reserved.
  * @company		Sunshine Insurance Group.
  * @author		yushuanghai
- * @version		$Id: FtpClient.java,v 1.3 2013-1-15 ÉÏÎç9:56:13  $
- * @create		2013-1-15 ÉÏÎç9:56:13
+ * @version		$Id: FtpClient.java,v 1.3 2013-1-15 9:56:13  $
+ * @create		2013-1-15  9:56:13
  */
 public class SFtpClient{ 
 
@@ -52,9 +52,9 @@ public class SFtpClient{
 	}
 	
 	/**
-	* ÉÏ´«ÎÄ¼ş
-	* @param directory ÉÏ´«µÄÄ¿Â¼
-	* @param uploadFile ÒªÉÏ´«µÄÎÄ¼ş
+	* ä¸Šä¼ æ–‡ä»¶
+	* @param directory ç›®å½•
+	* @param uploadFile æ–‡ä»¶
 	* @param sftp
 	 * @throws SftpException 
 	 * @throws FileNotFoundException 
@@ -66,10 +66,10 @@ public class SFtpClient{
 	}
 
 	/**
-	* ÏÂÔØÎÄ¼ş
-	* @param directory ÏÂÔØÄ¿Â¼
-	* @param downloadFile ÏÂÔØµÄÎÄ¼ş
-	* @param saveFile ´æÔÚ±¾µØµÄÂ·¾¶
+	* ä¸‹è½½
+	* @param directory ç›®å½•
+	* @param downloadFile åŸæ–‡ä»¶å
+	* @param saveFile æ–°æ–‡ä»¶å
 	* @param sftp
 	 * @throws SftpException 
 	 * @throws FileNotFoundException 
@@ -81,9 +81,9 @@ public class SFtpClient{
 	}
 
 	/**
-	* É¾³ıÎÄ¼ş
-	* @param directory ÒªÉ¾³ıÎÄ¼şËùÔÚÄ¿Â¼
-	* @param deleteFile ÒªÉ¾³ıµÄÎÄ¼ş
+	* åˆ é™¤
+	* @param directory ç›®å½•
+	* @param deleteFile æ–‡ä»¶
 	* @param sftp
 	 * @throws SftpException 
 	*/
@@ -93,8 +93,8 @@ public class SFtpClient{
 	}
 
 	/**
-	* ÁĞ³öÄ¿Â¼ÏÂµÄÎÄ¼ş
-	* @param directory ÒªÁĞ³öµÄÄ¿Â¼
+	* æ˜¾ç¤ºæ–‡ä»¶
+	* @param directory ç›®å½•
 	* @param sftp
 	* @return
 	* @throws SftpException
@@ -104,14 +104,14 @@ public class SFtpClient{
 	}
     /**
      *  
-     * ÎÄ¼şÉÏ´«
-     * @param ip Ö÷»úip
-     * @param user ÓÃ»§Ãû
-     * @param password ÃÜÂë
-     * @param srcFile Ô´ÎÄ¼ş
-     * @param targetDir Ä¿±êÄ¿Â¼
-     * @param targetFile Ä¿±êÎÄ¼şÃû
-     * @param fileExt Ô´ÎÄ¼şÀ©Õ¹Ãû
+     * ä¸Šä¼ æ–‡ä»¶
+     * @param ip  ip
+     * @param user ç”¨æˆ·å
+     * @param password å¯†ç 
+     * @param srcFile æºæ–‡ä»¶
+     * @param targetDir ç›®æ ‡ç›®å½•
+     * @param targetFile ç›®æ ‡æ–‡ä»¶å
+     * @param fileExt æºæ–‡ä»¶æ‰©å±•å
      * @throws Exception
      */
     public static void upload(String ip,String user,String password,String srcFile,String targetDir,
@@ -120,12 +120,12 @@ public class SFtpClient{
        try { 
     	  sftp =  connect(ip,port,user,password);
     	 if(!fileExt.contains("txt")&&!fileExt.contains("csv")){
-    		 throw new Exception("SFTP Client upload  not supply file type Error£¡"); 
+    		 throw new Exception("SFTP Client upload  not supply file type Error!"); 
     	 }
     	 upload(targetDir,targetFile,srcFile,sftp);
 	    } catch (IOException e) { 
 	        e.printStackTrace(); 
-	        throw new Exception("SFTP Client upload Error£¡", e); 
+	        throw new Exception("SFTP Client upload Error!", e); 
 	    } finally { 
 	    	 if (sftp != null && sftp.isConnected()) { 
     		     sftp.getSession().disconnect(); 
@@ -137,13 +137,13 @@ public class SFtpClient{
 
     /**
      * 
-     * ÎÄ¼şÏÂÔØ
-     * @param ip Ö÷»úip
-     * @param user ÓÃ»§Ãû
-     * @param password ÃÜÂë
-     * @param srcFile Ô´ÎÄ¼ş
-     * @param targetFile Ä¿±êÎÄ¼ş
-     * @param fileExt Ô´ÎÄ¼şÀ©Õ¹Ãû
+     * ä¸‹è½½æ–‡ä»¶
+     * @param ip  ip
+     * @param user ç”¨æˆ·å
+     * @param password å¯†ç 
+     * @param srcFile æºæ–‡ä»¶
+     * @param targetFile ç›®æ ‡æ–‡ä»¶
+     * @param fileExt æºæ–‡ä»¶æ‰©å±•å
      * @throws Exception
      */
     public static void download(String ip,String user,String password,String srcDir,String srcFile,
@@ -152,12 +152,12 @@ public class SFtpClient{
         try { 
      	  sftp =  connect(ip,port,user,password);
      	 if(!fileExt.contains("txt")&&!fileExt.contains("csv")){
-     		 throw new Exception("SFTP Client download  not supply file type Error£¡"); 
+     		 throw new Exception("SFTP Client download  not supply file type Error!"); 
      	 }
      	 download(srcDir,srcFile,targetDir,targetFileName,sftp);
  	    } catch (IOException e) { 
  	        e.printStackTrace(); 
- 	        throw new Exception("SFTP Client download Error£¡", e); 
+ 	        throw new Exception("SFTP Client download Error!", e); 
  	    } finally { 
  	    	 if (sftp != null && sftp.isConnected()) { 
      		     sftp.getSession().disconnect(); 

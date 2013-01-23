@@ -10,28 +10,28 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTPClient;
 /**
  * 
- * @title 		ftpĞ­ÒéµÄÎÄ¼ş´«Êä
+ * @title 		ftp å®¢æˆ·ç«¯
  * @description	
  * @usage		
  * @copyright	Copyright 2012  Sunshine Insurance Group . All rights reserved.
  * @company		Sunshine Insurance Group.
  * @author		yushuanghai
- * @version		$Id: FtpClient.java,v 1.3 2013-1-15 ÉÏÎç9:56:13  $
- * @create		2013-1-15 ÉÏÎç9:56:13
+ * @version		$Id: FtpClient.java,v 1.3 2013-1-15  9:56:13  $
+ * @create		2013-1-15  9:56:13
  */
 public class FtpClient{ 
 
 	private final static int port = 20;
     /**
      *  
-     * ÎÄ¼şÉÏ´«
-     * @param ip Ö÷»úip
-     * @param user ÓÃ»§Ãû
-     * @param password ÃÜÂë
-     * @param srcFile Ô´ÎÄ¼ş
-     * @param targetDir Ä¿±êÄ¿Â¼
-     * @param targetFile Ä¿±êÎÄ¼şÃû
-     * @param fileExt Ô´ÎÄ¼şÀ©Õ¹Ãû
+     * ä¸Šä¼ æ–‡ä»¶
+     * @param ip  ip
+     * @param user ç”¨æˆ·å
+     * @param password å¯†ç 
+     * @param srcFile æºæ–‡ä»¶
+     * @param targetDir ç›®æ ‡ç›®å½•
+     * @param targetFile ç›®æ ‡æ–‡ä»¶å
+     * @param fileExt æºæ–‡ä»¶æ‰©å±•å
      * @throws Exception
      */
     public static void upload(String ip,String user,String password,String srcFile,String targetDir,
@@ -54,27 +54,27 @@ public class FtpClient{
             ftpClient.storeFile(targetFile, fis); 
         } catch (IOException e) { 
             e.printStackTrace(); 
-            throw new Exception("FTP Client upload Error£¡", e); 
+            throw new Exception("FTP Client upload Error!", e); 
         } finally { 
             IOUtils.closeQuietly(fis); 
             try { 
                 ftpClient.disconnect(); 
             } catch (IOException e) { 
                 e.printStackTrace(); 
-                throw new Exception("FTP Client close Error£¡", e); 
+                throw new Exception("FTP Client close Error!", e); 
             } 
         } 
     } 
 
     /**
      * 
-     * ÎÄ¼şÏÂÔØ
-     * @param ip Ö÷»úip
-     * @param user ÓÃ»§Ãû
-     * @param password ÃÜÂë
-     * @param srcFile Ô´ÎÄ¼ş
-     * @param targetFile Ä¿±êÎÄ¼ş
-     * @param fileExt Ô´ÎÄ¼şÀ©Õ¹Ãû
+     * ä¸‹è½½æ–‡ä»¶
+     * @param ip  ip
+     * @param user  ç”¨æˆ·å
+     * @param password å¯†ç 
+     * @param srcFile æºæ–‡ä»¶
+     * @param targetFile ç›®æ ‡æ–‡ä»¶
+     * @param fileExt æºæ–‡ä»¶æ‰©å±•å
      * @throws Exception
      */
     public static void download(String ip,String user,String password,String srcFile,
@@ -95,14 +95,14 @@ public class FtpClient{
             ftpClient.retrieveFile(srcFile, fos); 
         } catch (IOException e) { 
             e.printStackTrace(); 
-            throw new Exception("FTP Client download Error£¡", e); 
+            throw new Exception("FTP Client download Error!", e); 
         } finally { 
             IOUtils.closeQuietly(fos); 
             try { 
                 ftpClient.disconnect(); 
             } catch (IOException e) { 
                 e.printStackTrace(); 
-                throw new Exception("FTP Client close Error£¡", e); 
+                throw new Exception("FTP Client close Error!", e); 
             } 
         } 
     } 

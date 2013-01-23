@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 
 /**
  * 
- * @title 		Êı¾İµ¼ÈëÊµÏÖÀà
+ * @title 		FTP å¯¼å…¥å®ç°ç±»
  * @description	
  * @usage		
  * @copyright	Copyright 2012  Sunshine Insurance Group . All rights reserved.
  * @company		Sunshine Insurance Group.
  * @author		yushuanghai
- * @version		$Id: exportFtpImpl.java,v 1.3 2013-1-22 ÉÏÎç11:17:47  $
- * @create		2013-1-22 ÉÏÎç11:17:47
+ * @version		$Id: exportFtpImpl.java,v 1.3 2013-1-22  11:17:47  $
+ * @create		2013-1-22 11:17:47
  */
 @Repository
 public class ImportFtpImpl implements Import {
