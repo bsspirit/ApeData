@@ -21,7 +21,7 @@ public class ImportFtpImplTest extends BaseTestCase{
 	@Rollback(value=false)
 	public void testImportFromRemoteByFtp() throws Exception{
 		importFtpImpl.importFromRemoteBySFtp("42.121.108.236", 
-				"root", "apehadoop", "/root/","test.txt", "/user/yushh/test.txt", ".txt");
+				"test", "testape", "/home/test/","test.txt", "/user/yushh/test.txt", ".txt");
 	}
 	
 }
