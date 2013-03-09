@@ -1,5 +1,10 @@
 package org.ape.data.core.util;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.ape.data.core.io.model.MetaInfo;
+
 /**
  * 
  * @author Conan_Z
@@ -10,7 +15,7 @@ public interface Import {
     void importFromRemoteByFtp();
     void split();
     void processStreaming();
-    void storeMeta();
-    void storeInfo();
+    MetaInfo storeMeta(String userName,String projName,String tableName,String url,String type) throws IOException;
+    void storeInfo(String url,MetaInfo infol) throws IOException;
     
 }

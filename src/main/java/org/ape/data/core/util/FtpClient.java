@@ -13,8 +13,6 @@ import org.apache.commons.net.ftp.FTPClient;
  * @title 		ftp 客户端
  * @description	
  * @usage		
- * @copyright	Copyright 2012  Sunshine Insurance Group . All rights reserved.
- * @company		Sunshine Insurance Group.
  * @author		yushuanghai
  * @version		$Id: FtpClient.java,v 1.3 2013-1-15  9:56:13  $
  * @create		2013-1-15  9:56:13

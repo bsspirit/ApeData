@@ -17,9 +17,6 @@ import org.springframework.stereotype.Service;
  * 
  * @title 		FTP 导入实现类
  * @description	
- * @usage		
- * @copyright	Copyright 2012  Sunshine Insurance Group . All rights reserved.
- * @company		Sunshine Insurance Group.
  * @author		yushuanghai
  * @version		$Id: exportFtpImpl.java,v 1.3 2013-1-22  11:17:47  $
  * @create		2013-1-22 11:17:47
