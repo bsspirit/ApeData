@@ -40,7 +40,13 @@ public class Column {
 	public void setColumnType(String columnType) {
 		this.columnType = columnType;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Column [id=" + id + ", columnName=" + columnName
+				+ ", columnType=" + columnType + "]";
+	}
+
 	
 
 }

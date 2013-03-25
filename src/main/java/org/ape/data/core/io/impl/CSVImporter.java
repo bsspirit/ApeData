@@ -48,28 +48,22 @@ public class CSVImporter implements Import{
 	}
 	
 	@Override
-	public  MetaInfo storeMeta(String userName,String projName,String tableName,String url,String type) throws IOException {
-		CSVReader reader = new CSVReader(new FileReader(url));
-		String [] nextLine;
-		int i=0;
+	public  MetaInfo storeMeta(String userName,String projName,String sql,String url,String type) throws IOException {
 		MetaInfo mi = new MetaInfo();
+		sql =sql.toUpperCase();
+		String tableName =sql.substring(sql.indexOf("TABLE")+5, sql.indexOf("(")).trim();
 		mi.setTableName("t_"+userName+"_"+projName+"_"+tableName);
+		
 		List<Column> cols = new ArrayList<Column>();
-		while ((nextLine = reader.readNext()) != null) {
-        	if(i==0){
-        		//解析首行
-        		for(int j=0;j<nextLine.length;j++){
-        			String[] col = nextLine[j].split("\\s+");
-        			Column c = new Column();
-        			c.setId(j+1);
-        			c.setColumnName(col[0]);
-        			c.setColumnType(col[1]);
-        			cols.add(c);
-        		}
-              i++;
-        	}else{
-        		break;
-        	}
+		String s = sql.substring(sql.indexOf("(")+1, sql.lastIndexOf(")"));
+		String[] colt = s.split(",");
+		for(int j=0;j<colt.length;j++){
+			String[] col = colt[j].split("\\s+");
+			Column c = new Column();
+			c.setId(j+1);
+			c.setColumnName(col[0]);
+			c.setColumnType(col[1]);
+			cols.add(c);
 		}
 		mi.setColumns(cols);
 		metaStore.storeMetaData(userName, projName,tableName, mi, type);
