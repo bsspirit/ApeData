@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.ape.data.core.io.model.Column;
-import org.ape.data.core.io.model.MetaInfo;
+import org.ape.data.core.io.model.TableMetaInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,7 @@ public class MetaStore {
 	private MySqlBaseDao dao;
 	
 	@Transactional(propagation=Propagation.REQUIRED)
-	public  void storeMetaData(String userName,String projName,String tableName,MetaInfo mi,String type){
+	public  void storeMetaData(String userName,String projName,String tableName,TableMetaInfo mi,String type){
 		createUserTable(mi);
 		StringBuffer sb = new StringBuffer("insert into META_SCHEMA(USERNAME,PROJECT,TABLENAME,COLOM,TYPE) values('"+userName+"','"+projName+"','"+tableName+"','");
 	   	for (Column c:mi.getColumns()){ 
@@ -31,7 +31,7 @@ public class MetaStore {
 	}
 	
 
-    public  void createUserTable(MetaInfo mi){
+    public  void createUserTable(TableMetaInfo mi){
     	StringBuffer sb = new StringBuffer("create table "+mi.getTableName()+"( id bigint auto_increment not null primary key,");
     	for (Column c:mi.getColumns()){ 
 	   		   sb.append(c.getColumnName()+" "+c.getColumnType()+",");
@@ -40,9 +40,9 @@ public class MetaStore {
 	    dao.update(sql);
 	}
     
-    public MetaInfo getMetaInfo(String userName,String projName,String tableName){
+    public TableMetaInfo getMetaInfo(String userName,String projName,String tableName){
     	Map map =  dao.getObject("select * from META_SCHEMA where USERNAME='"+userName+"' and PROJECT='"+projName+"' and TABLENAME='"+tableName+"'");
-    	MetaInfo mi = new MetaInfo();
+    	TableMetaInfo mi = new TableMetaInfo();
 //    	{ID=26, USERNAME=yushh, PROJECT=test, TABLENAME=t_col, TYPE=hadoop, 
 //    			COLOM=1 xuhao VARCHAR(50),2 gongsi VARCHAR(50),3 diqu VARCHAR(50),
 //    			4 shuzi1 INT,5 shuzi2 INT,6 shuzi3 INT,7 shuzi4 INT,8 riqi TIMESTAMP,

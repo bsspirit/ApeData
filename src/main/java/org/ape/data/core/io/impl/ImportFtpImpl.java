@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.httpclient.util.DateUtil;
 import org.ape.data.core.io.Import;
+import org.ape.data.core.io.ImportFileType;
 import org.ape.data.core.storage.HdfsBaseDao;
 import org.ape.data.core.util.FtpClient;
 import org.ape.data.core.util.SFtpClient;
@@ -43,17 +44,7 @@ public class ImportFtpImpl implements Import {
 		
 	}
 
-	@Override
-	public void split() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void processStreaming() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void storeMeta() {
@@ -82,6 +73,22 @@ public class ImportFtpImpl implements Import {
 				"C:\\tmp\\", targetFileName, srcFileExt);
 		hdfsBaseDao.copyFile(targetDir+targetFileName, hdfsFile);
 		f.delete();
+		
+	}
+
+
+
+	@Override
+	public void split(ImportFileType ifp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void processStreaming(ImportFileType ifp) {
+		// TODO Auto-generated method stub
 		
 	}
 

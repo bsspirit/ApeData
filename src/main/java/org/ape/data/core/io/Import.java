@@ -7,8 +7,8 @@ package org.ape.data.core.io;
  */
 public interface Import {
     
-    void split();
-    void processStreaming();
+    void split(ImportFileType ifp);
+    void processStreaming(ImportFileType ifp);
     void storeMeta();
     void storeInfo();
 	void importFromRemoteByFtp(String ip, String userName, String password,

@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 import org.ape.data.core.io.model.Cell;
 import org.ape.data.core.io.model.Column;
-import org.ape.data.core.io.model.MetaInfo;
+import org.ape.data.core.io.model.TableMetaInfo;
 import org.ape.data.core.io.model.Row;
 import org.ape.data.core.storage.MetaStore;
 import org.ape.data.core.storage.MySqlBaseDao;
@@ -48,8 +48,8 @@ public class CSVImporter implements Import{
 	}
 	
 	@Override
-	public  MetaInfo storeMeta(String userName,String projName,String sql,String url,String type) throws IOException {
-		MetaInfo mi = new MetaInfo();
+	public  TableMetaInfo storeMeta(String userName,String projName,String sql,String url,String type) throws IOException {
+		TableMetaInfo mi = new TableMetaInfo();
 		sql =sql.toUpperCase();
 		String tableName =sql.substring(sql.indexOf("TABLE")+5, sql.indexOf("(")).trim();
 		mi.setTableName("t_"+userName+"_"+projName+"_"+tableName);
@@ -71,7 +71,7 @@ public class CSVImporter implements Import{
 	}
 
 	@Override
-	public void storeInfo(String url,MetaInfo info) throws IOException {
+	public void storeInfo(String url,TableMetaInfo info) throws IOException {
 		CSVReader reader = new CSVReader(new FileReader(url));
         String [] nextLine;
         StringBuffer sql = new StringBuffer("insert into "+info.getTableName()+"(");

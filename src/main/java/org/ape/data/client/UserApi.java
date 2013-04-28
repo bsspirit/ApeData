@@ -1,5 +1,7 @@
 package org.ape.data.client;
 
+import org.ape.data.core.io.model.UserMetaInfo;
+
 /**
  * 
  * @author Conan_Z
@@ -7,8 +9,7 @@ package org.ape.data.client;
  */
 public interface UserApi {
 
-    void download(int id, int uid);
-    void upload(int uid, Object obj);
-    void status(int uid);
+	UserMetaInfo importCsv(UserMetaInfo umi);
+    UserMetaInfo getUserMetaInfo(String userName,String projectName,String tableName);
 
 }

@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 import org.ape.data.core.io.model.Cell;
 import org.ape.data.core.io.model.Column;
-import org.ape.data.core.io.model.MetaInfo;
+import org.ape.data.core.io.model.TableMetaInfo;
 import org.ape.data.core.io.model.Row;
 import org.ape.data.core.storage.MetaStore;
 import org.ape.data.core.storage.MySqlBaseDao;
@@ -50,13 +50,13 @@ public class SqoopImporter implements Import{
 	
 
 	@Override
-	public void storeInfo(String url,MetaInfo info) throws IOException {
+	public void storeInfo(String url,TableMetaInfo info) throws IOException {
 		//从关系型数据库导入sqoop中
 //		sqoop import --connect jdbc:mysql://mysqlserver_IP/databaseName --table testtable -m 1 
 	}
 
 	@Override
-	public MetaInfo storeMeta(String userName, String projName,
+	public TableMetaInfo storeMeta(String userName, String projName,
 			String tableName, String url, String type) throws IOException {
 		return null;
 	}
