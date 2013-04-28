@@ -1,0 +1,32 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch yushh
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   pom.xml
+#	modified:   src/main/java/org/ape/data/client/UserApi.java
+#	deleted:    src/main/java/org/ape/data/core/io/Export.java
+#	modified:   src/main/java/org/ape/data/core/io/Import.java
+#	modified:   src/main/java/org/ape/data/core/io/impl/CSVImporter.java
+#	modified:   src/main/java/org/ape/data/core/io/impl/ImportFtpImpl.java
+#	modified:   src/main/java/org/ape/data/core/io/impl/SqoopImporter.java
+#	deleted:    src/main/java/org/ape/data/core/io/model/MetaInfo.java
+#	modified:   src/main/java/org/ape/data/core/storage/MetaStore.java
+#	modified:   src/main/java/org/ape/data/core/util/Import.java
+#	modified:   src/test/java/org/ape/data/core/io/impl/CSVImporterTest.java
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	czdsllw3.i1p.txt
+#	src/main/java/org/ape/data/core/io/DownLoad.java
+#	src/main/java/org/ape/data/core/io/ImportFileType.java
+#	src/main/java/org/ape/data/core/io/model/CsvMetaInfo.java
+#	src/main/java/org/ape/data/core/io/model/OperationMetaInfo.java
+#	src/main/java/org/ape/data/core/io/model/TableMetaInfo.java
+#	src/main/java/org/ape/data/core/io/model/UserMetaInfo.java
+#	src/main/java/org/ape/data/core/util/FtpServer.java
+#	src/test/java/org/ape/data/core/util/
+
